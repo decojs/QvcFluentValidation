@@ -74,7 +74,6 @@
     <Compile Include="Steps\QueryAndValidator.cs" />
     <Compile Include="Steps\QueryAndValidatorType.cs" />
     <Compile Include="Steps\QueryValidationSteps.cs" />
-    <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
