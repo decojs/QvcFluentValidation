@@ -8,6 +8,7 @@
     using NSubstitute;
 
     using NUnit.Framework;
+    using NUnit.Framework.Constraints;
 
     using Qvc;
 
@@ -17,8 +18,6 @@
     using Shouldly;
 
     using Tests.TestMaterial;
-
-    using Action = QvcFluentValidation.Action;
 
     [TestFixture]
     public class FullTest
@@ -32,7 +31,7 @@
         public async void TestValidateCommand()
         {
             var commandA = new CommandA();
-            var result = await Action.Validate(commandA)
+            var result = await Validate.Command(commandA)
                 .ThenFindValidator(t => typeof(TestValidator))
                 .ThenCreateValidator(t => Default.CreateHandler(t) as IValidator)
                 .ThenValidate();
@@ -44,12 +43,23 @@
         public async void TestValidateQuery()
         {
             var queryA = new QueryA();
-            var result = await Action.Validate(queryA)
+            var result = await Validate.Query(queryA)
                 .ThenFindValidator(t => typeof(TestValidator))
                 .ThenCreateValidator(t => Default.CreateHandler(t) as IValidator)
                 .ThenValidate();
 
             result.ShouldBe(queryA);
+        }
+
+        [Test]
+        public async void TestConstraints()
+        {
+            var result = await Task.FromResult(typeof(QueryA))
+                .ThenFindValidator(t => typeof(TestValidator))
+                .ThenCreateValidator(t => Default.CreateHandler(t) as IValidator)
+                .ThenGetValidators(v => null)
+                .ThenGetConstraints(v => null);
+            result.Parameters.ShouldBeEmpty();
         }
     }
 }

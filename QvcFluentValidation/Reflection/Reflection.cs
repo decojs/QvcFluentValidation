@@ -3,8 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
 
     using FluentValidation;
+    using FluentValidation.Validators;
+
+    using Qvc.Constraints;
 
     using QvcFluentValidation.Mapping;
 
@@ -25,6 +29,11 @@
 
             return mappers.SelectMany(m => Qvc.Reflection.Reflection.GetFirstGenericArgumentFromInterfacesOfType(m, typeof(IMapValidationConstraint<,>)).Select(v => new { Mapper = m, Validator = v }))
                 .ToDictionary(o => o.Validator, o => o.Mapper);
-        } 
+        }
+
+        public static IRule InvokeCreateFromMethod(Type executableType, IMapValidationConstraint mapper, IPropertyValidator validator)
+        {
+            return executableType.GetMethod("CreateFrom").Invoke(mapper, new object[] { validator }) as IRule;
+        }
     }
 }

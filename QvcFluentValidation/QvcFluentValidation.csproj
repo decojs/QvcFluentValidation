@@ -51,7 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
+    <Compile Include="ConstraintsExtensions.cs" />
+    <Compile Include="Steps\ConstraintsAndMappers.cs" />
+    <Compile Include="Steps\FluentConstraintsSteps.cs" />
+    <Compile Include="Steps\ValidatorType.cs" />
+    <Compile Include="Validate.cs" />
     <Compile Include="CommandValidationExtensions.cs" />
     <Compile Include="Mappers\MapNotEmpty.cs" />
     <Compile Include="Mappers\MapPattern.cs" />
