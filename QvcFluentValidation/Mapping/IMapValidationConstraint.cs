@@ -1,6 +1,7 @@
-﻿namespace QvcFluentValidation
+﻿namespace QvcFluentValidation.Mapping
 {
     using FluentValidation.Validators;
+
     using Qvc.Constraints;
 
     public interface IMapValidationConstraint<in TValidator, out TRule> : IMapValidationConstraint

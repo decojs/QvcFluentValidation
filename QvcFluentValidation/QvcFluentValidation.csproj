@@ -52,10 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
-    <Compile Include="IMapValidationConstraint.cs" />
+    <Compile Include="CommandValidationExtensions.cs" />
     <Compile Include="Mappers\MapNotEmpty.cs" />
     <Compile Include="Mappers\MapPattern.cs" />
+    <Compile Include="Mapping\IMapValidationConstraint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryValidationExtensions.cs" />
     <Compile Include="Reflection\Reflection.cs" />
     <Compile Include="Reflection\Setup.cs" />
     <Compile Include="Repository\MapperRepository.cs" />

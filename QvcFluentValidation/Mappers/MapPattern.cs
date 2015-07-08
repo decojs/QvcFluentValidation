@@ -1,9 +1,11 @@
-﻿using FluentValidation.Validators;
-
-using Qvc.Rules;
-
-namespace QvcFluentValidation.Mappers
+﻿namespace QvcFluentValidation.Mappers
 {
+    using FluentValidation.Validators;
+
+    using Qvc.Rules;
+
+    using QvcFluentValidation.Mapping;
+
     public class MapPattern : IMapValidationConstraint<RegularExpressionValidator, Pattern>
     {
         public string Name

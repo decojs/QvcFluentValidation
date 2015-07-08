@@ -70,9 +70,13 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Steps\TestCreateValidator.cs" />
+    <Compile Include="Steps\TestFindValidator.cs" />
+    <Compile Include="Steps\TestValidate.cs" />
     <Compile Include="TestMaterial\Executables.cs" />
     <Compile Include="FullTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMaterial\TestValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

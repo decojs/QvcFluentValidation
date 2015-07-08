@@ -11,6 +11,7 @@
 
     using Qvc;
 
+    using QvcFluentValidation;
     using QvcFluentValidation.Steps;
 
     using Shouldly;
@@ -22,14 +23,9 @@
     [TestFixture]
     public class FullTest
     {
-        private IValidator _validator;
-
         [SetUp]
         public void Setup()
         {
-            _validator = Substitute.For<IValidator>();
-            _validator.ValidateAsync(Arg.Any<object>())
-                .Returns(Task.FromResult(new ValidationResult()));
         }
 
         [Test]
@@ -37,11 +33,9 @@
         {
             var commandA = new CommandA();
             var result = await Action.Validate(commandA)
-                .Then(c => CommandValidationSteps.FindValidator(c, t => typeof(IValidator)))
-                .Then(c => CommandValidationSteps.CreateValidator(c, t => _validator))
-                .Then(CommandValidationSteps.Validate);
-
-            _validator.Received().ValidateAsync(commandA);
+                .ThenFindValidator(t => typeof(TestValidator))
+                .ThenCreateValidator(t => Default.CreateHandler(t) as IValidator)
+                .ThenValidate();
 
             result.ShouldBe(commandA);
         }
@@ -51,11 +45,9 @@
         {
             var queryA = new QueryA();
             var result = await Action.Validate(queryA)
-                .Then(c => QueryValidationSteps.FindValidator(c, t => typeof(IValidator)))
-                .Then(c => QueryValidationSteps.CreateValidator(c, t => _validator))
-                .Then(QueryValidationSteps.Validate);
-
-            _validator.Received().ValidateAsync(queryA);
+                .ThenFindValidator(t => typeof(TestValidator))
+                .ThenCreateValidator(t => Default.CreateHandler(t) as IValidator)
+                .ThenValidate();
 
             result.ShouldBe(queryA);
         }

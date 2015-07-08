@@ -6,6 +6,8 @@
 
     using FluentValidation;
 
+    using QvcFluentValidation.Mapping;
+
     public static class Reflection
     {
         public static Dictionary<Type, Type> GetAllValidators(IReadOnlyCollection<Type> types)

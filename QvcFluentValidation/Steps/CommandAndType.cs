@@ -8,8 +8,8 @@
     {
         public CommandAndType(ICommand command)
         {
-            this.Command = command;
-            this.Type = command.GetType();
+            Command = command;
+            Type = command.GetType();
         }
 
         public ICommand Command { get; private set; }
