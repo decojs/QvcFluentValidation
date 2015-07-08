@@ -56,7 +56,7 @@
         {
             var parameters = self.Parameters.Select(p => 
                 new Parameter(
-                    p.Field, 
+                    p.Field.ToCamelCase(), 
                     p.Constraints
                     .Select(c => CreateConstraint(c, createMapper))
                     .Where(c => c != null)
