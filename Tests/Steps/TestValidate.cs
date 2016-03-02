@@ -37,7 +37,7 @@
         }
 
         [Test]
-        public async void TestCommandValid()
+        public async Task TestCommandValid()
         {
             var command = new CommandA();
             var self = new CommandAndValidator(command, _validValidator);
@@ -47,7 +47,7 @@
         }
 
         [Test]
-        public async void TestCommandNull()
+        public async Task TestCommandNull()
         {
             var command = new CommandA();
             var self = new CommandAndValidator(command, null);
@@ -68,7 +68,7 @@
         }
 
         [Test]
-        public async void TestQueryValid()
+        public async Task TestQueryValid()
         {
             var query = new QueryA();
             var self = new QueryAndValidator(query, _validValidator);
@@ -78,7 +78,7 @@
         }
 
         [Test]
-        public async void TestQueryNull()
+        public async Task TestQueryNull()
         {
             var query = new QueryA();
             var self = new QueryAndValidator(query, null);

@@ -18,7 +18,7 @@
             return new Pattern
             {
                 Message = validator.ErrorMessageSource.GetString(),
-                Regex = validator.Expression,
+                Regexp = validator.Expression,
                 Flags = new string[] { }
             };
         }

@@ -39,8 +39,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Qvc, Version=0.7.0.21703, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Qvc.0.7.0.21703\lib\net45\Qvc.dll</HintPath>
+    <Reference Include="Qvc, Version=0.8.0.32198, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Qvc.0.8.0.32198\lib\net452\Qvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

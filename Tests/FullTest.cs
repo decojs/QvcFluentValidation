@@ -3,18 +3,10 @@
     using System.Threading.Tasks;
 
     using FluentValidation;
-    using FluentValidation.Results;
-
-    using NSubstitute;
-
     using NUnit.Framework;
-    using NUnit.Framework.Constraints;
-
     using Qvc;
 
     using QvcFluentValidation;
-    using QvcFluentValidation.Steps;
-
     using Shouldly;
 
     using Tests.TestMaterial;
@@ -28,7 +20,7 @@
         }
 
         [Test]
-        public async void TestValidateCommand()
+        public async Task TestValidateCommand()
         {
             var commandA = new CommandA();
             var result = await Validate.Command(commandA)
@@ -40,7 +32,7 @@
         }
 
         [Test]
-        public async void TestValidateQuery()
+        public async Task TestValidateQuery()
         {
             var queryA = new QueryA();
             var result = await Validate.Query(queryA)
@@ -52,7 +44,7 @@
         }
 
         [Test]
-        public async void TestConstraints()
+        public async Task TestConstraints()
         {
             var result = await Task.FromResult(typeof(QueryA))
                 .ThenFindValidator(t => typeof(TestValidator))
