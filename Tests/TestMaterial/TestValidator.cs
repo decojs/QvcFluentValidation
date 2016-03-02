@@ -1,6 +1,9 @@
-﻿namespace Tests.TestMaterial
+﻿using System.Collections.Generic;
+
+namespace Tests.TestMaterial
 {
     using System;
+    using System.Threading;
     using System.Threading.Tasks;
 
     using FluentValidation;
@@ -13,7 +16,7 @@
             throw new NotImplementedException();
         }
 
-        public Task<ValidationResult> ValidateAsync(object instance)
+        public Task<ValidationResult> ValidateAsync(object instance, CancellationToken cancellation = new CancellationToken())
         {
             return Task.FromResult(new ValidationResult());
         }
@@ -23,14 +26,14 @@
             throw new NotImplementedException();
         }
 
-        public Task<ValidationResult> ValidateAsync(ValidationContext context)
+        public Task<ValidationResult> ValidateAsync(ValidationContext context, CancellationToken cancellation = new CancellationToken())
         {
             throw new NotImplementedException();
         }
 
         public IValidatorDescriptor CreateDescriptor()
         {
-            throw new NotImplementedException();
+            return new ValidatorDescriptor<QueryA>(new List<IValidationRule>());
         }
 
         public bool CanValidateInstancesOfType(Type type)
