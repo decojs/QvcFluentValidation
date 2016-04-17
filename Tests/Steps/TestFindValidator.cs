@@ -21,9 +21,9 @@
                 t =>
                 {
                     t.ShouldBe(self.Type);
-                    return typeof(TestValidator);
+                    return typeof(TestValidator<CommandA>);
                 });
-            result.ValidatorType.ShouldBe(typeof(TestValidator));
+            result.ValidatorType.ShouldBe(typeof(TestValidator<CommandA>));
             result.Command.ShouldBe(command);
         }
 
@@ -37,9 +37,9 @@
                 t =>
                 {
                     t.ShouldBe(self.Type);
-                    return typeof(TestValidator);
+                    return typeof(TestValidator<QueryA>);
                 });
-            result.ValidatorType.ShouldBe(typeof(TestValidator));
+            result.ValidatorType.ShouldBe(typeof(TestValidator<QueryA>));
             result.Query.ShouldBe(query);
         }
 

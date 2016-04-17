@@ -9,11 +9,11 @@ namespace Tests.TestMaterial
     using FluentValidation;
     using FluentValidation.Results;
 
-    public class TestValidator : IValidator
+    public class TestValidator<T> : IValidator
     {
         public ValidationResult Validate(object instance)
         {
-            throw new NotImplementedException();
+            return new ValidationResult();
         }
 
         public Task<ValidationResult> ValidateAsync(object instance, CancellationToken cancellation = new CancellationToken())
@@ -23,22 +23,22 @@ namespace Tests.TestMaterial
 
         public ValidationResult Validate(ValidationContext context)
         {
-            throw new NotImplementedException();
+            return new ValidationResult();
         }
 
         public Task<ValidationResult> ValidateAsync(ValidationContext context, CancellationToken cancellation = new CancellationToken())
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new ValidationResult());
         }
 
         public IValidatorDescriptor CreateDescriptor()
         {
-            return new ValidatorDescriptor<QueryA>(new List<IValidationRule>());
+            return new ValidatorDescriptor<T>(new List<IValidationRule>());
         }
 
         public bool CanValidateInstancesOfType(Type type)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
