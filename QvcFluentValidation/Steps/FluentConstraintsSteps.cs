@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
 
     using FluentValidation;
@@ -26,7 +25,7 @@
             ValidatorType self,
             Func<Type, IValidator> createValidator)
         {
-            return self == null ? null : createValidator(self.Type);
+            return self?.Type == null ? null : createValidator(self.Type);
         }
 
         public static ConstraintsAndMappers GetValidators(IValidator self, Func<IPropertyValidator, Type> getMapperFor)

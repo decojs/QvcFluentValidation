@@ -1,7 +1,8 @@
-﻿namespace Tests.Steps
+﻿using System.Threading.Tasks;
+
+namespace Tests.Steps
 {
     using System.Linq;
-    using System.Threading.Tasks;
 
     using FluentValidation;
     using FluentValidation.Results;
@@ -30,24 +31,24 @@
             _invalidValidator = Substitute.For<IValidator>();
 
             _validValidator.ValidateAsync(Arg.Any<object>())
-                .Returns(Task.FromResult(new ValidationResult()));
+                .Returns(new ValidationResult());
 
             _invalidValidator.ValidateAsync(Arg.Any<object>())
-                .Returns(Task.FromResult(new ValidationResult(new[] { new ValidationFailure("FieldCamelCase", "error") })));
+                .Returns(new ValidationResult(new[] { new ValidationFailure("FieldCamelCase", "error") }));
         }
 
         [Test]
-        public async void TestCommandValid()
+        public async Task TestCommandValid()
         {
             var command = new CommandA();
             var self = new CommandAndValidator(command, _validValidator);
             var result = await CommandValidationSteps.Validate(self);
-            _validValidator.Received().ValidateAsync(command);
+            await _validValidator.Received().ValidateAsync(command);
             result.ShouldBe(command);
         }
 
         [Test]
-        public async void TestCommandNull()
+        public async Task TestCommandNull()
         {
             var command = new CommandA();
             var self = new CommandAndValidator(command, null);
@@ -68,17 +69,17 @@
         }
 
         [Test]
-        public async void TestQueryValid()
+        public async Task TestQueryValid()
         {
             var query = new QueryA();
             var self = new QueryAndValidator(query, _validValidator);
             var result = await QueryValidationSteps.Validate(self);
-            _validValidator.Received().ValidateAsync(query);
+            await _validValidator.Received().ValidateAsync(query);
             result.ShouldBe(query);
         }
 
         [Test]
-        public async void TestQueryNull()
+        public async Task TestQueryNull()
         {
             var query = new QueryA();
             var self = new QueryAndValidator(query, null);

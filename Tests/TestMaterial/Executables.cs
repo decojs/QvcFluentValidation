@@ -5,4 +5,8 @@
     class CommandA : ICommand { }
 
     class QueryA : IQuery { }
+
+    class CommandB : ICommand { }
+
+    class QueryB : IQuery { }
 }
